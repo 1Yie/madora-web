@@ -1,0 +1,9 @@
+export { BarChartComponent } from './bar-chart';
+export { ScatterChartComponent } from './scatter-chart';
+export { LineChartComponent } from './line-chart';
+export { PieChartComponent } from './pie-chart';
+export { AreaChartComponent } from './area-chart';
+export { RadarChartComponent } from './radar-chart';
+export { ComposedChartComponent } from './composed-chart';
+export { FunnelChartComponent } from './funnel-chart';
+export { RadialBarChartComponent } from './radial-bar-chart';
