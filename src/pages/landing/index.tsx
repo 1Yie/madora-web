@@ -5,7 +5,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useRef } from 'react';
 
 import { GithubGlyph } from '@/components/github-glyph';
-import { AppleIcon, LinuxIcon, WindowsIcon } from '@/components/platform-icons';
+import {
+	AndroidIcon,
+	AppleIcon,
+	IosIcon,
+	LinuxIcon,
+	WindowsIcon,
+} from '@/components/platform-icons';
 import { Aurora } from '@/components/react-bits/aurora';
 import { SplitText } from '@/components/react-bits/split-text';
 import { SiteHeader } from '@/components/site-header';
@@ -16,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const REPO_URL = 'https://github.com/1Yie/madora';
 const RELEASES_URL = 'https://github.com/1Yie/madora/releases';
+const INGSTAR_URL = 'https://ingstar.im/';
 
 export function Landing() {
 	const rootRef = useRef<HTMLDivElement>(null);
@@ -107,10 +114,10 @@ export function Landing() {
 							/>
 						</div>
 						<div className="flex flex-wrap items-start gap-3" data-hero-fade>
-							<div className="flex flex-col items-start gap-2">
+							<div className="flex w-40 flex-col items-stretch gap-2">
 								<a
-									className="inline-flex h-9 items-center gap-2 rounded-lg
-										bg-[oklch(0.205_0_0)] px-4 text-sm font-medium
+									className="inline-flex h-9 items-center justify-center gap-2
+										rounded-lg bg-[oklch(0.205_0_0)] px-4 text-sm font-medium
 										text-[oklch(0.985_0_0)] transition-opacity hover:opacity-85
 										dark:bg-[oklch(0.92_0_0)] dark:text-[oklch(0.2_0_0)]"
 									href={RELEASES_URL}
@@ -128,6 +135,8 @@ export function Landing() {
 									<WindowsIcon className="size-4" />
 									<AppleIcon className="size-4" />
 									<LinuxIcon className="size-4" />
+									<AndroidIcon className="size-4" />
+									<IosIcon className="size-4" />
 								</div>
 							</div>
 
@@ -165,12 +174,18 @@ export function Landing() {
 				>
 					<span>Madora · GPL-3.0</span>
 					<a
-						className="hover:text-black dark:hover:text-white"
-						href={REPO_URL}
+						className="flex items-center gap-2 hover:text-black
+							dark:hover:text-white"
+						href={INGSTAR_URL}
 						rel="noreferrer"
 						target="_blank"
 					>
-						1Yie/madora
+						<span>Powered by ingStar</span>
+						<img
+							alt="ingStar"
+							className="size-4 rounded-sm"
+							src="/ingstar-icon.png"
+						/>
 					</a>
 				</div>
 			</footer>
