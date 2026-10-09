@@ -2,27 +2,19 @@ import { Moon, Sun } from '@keyline-icons/react';
 import { Link } from 'react-router-dom';
 
 import { GithubGlyph } from '@/components/github-glyph';
-import { cn } from '@/lib/utils';
 import { useTheme } from '@/pages/landing/use-theme';
 
 const REPO_URL = 'https://github.com/1Yie/madora';
 
 // Shared top bar for the landing and not-found pages. The brand links home, the
-// theme toggle and GitHub sit on the right. `scrolled` adds the frosted surface;
-// without it the bar stays transparent over the hero.
-export function SiteHeader({ scrolled = false }: { scrolled?: boolean }) {
+// theme toggle and GitHub sit on the right. The bar is always transparent.
+export function SiteHeader() {
 	const { dark, toggleTheme } = useTheme();
 
 	return (
 		<header
-			className={cn(
-				`fixed inset-x-0 top-0 z-50 border-b
-				transition-[background-color,border-color,backdrop-filter] duration-300`,
-				scrolled
-					? `border-[oklch(0.922_0_0)] bg-[oklch(0.985_0_0)]/80 backdrop-blur-md
-						dark:border-[oklch(0.3_0_0)] dark:bg-[oklch(0.19_0_0)]/80`
-					: 'border-transparent bg-transparent'
-			)}
+			className="fixed inset-x-0 top-0 z-50 border-b border-transparent
+				bg-transparent"
 		>
 			<div className="mx-auto flex h-14 max-w-[1440px] items-center gap-3 px-8">
 				<Link className="flex items-center gap-3" to="/">

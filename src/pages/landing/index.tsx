@@ -2,7 +2,7 @@ import { useGSAP } from '@gsap/react';
 import { ArrowRight } from '@keyline-icons/react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useEffect, useRef, useState } from 'react';
+import { useRef } from 'react';
 
 import { GithubGlyph } from '@/components/github-glyph';
 import { AppleIcon, LinuxIcon, WindowsIcon } from '@/components/platform-icons';
@@ -19,16 +19,7 @@ const RELEASES_URL = 'https://github.com/1Yie/madora/releases';
 
 export function Landing() {
 	const rootRef = useRef<HTMLDivElement>(null);
-	const [scrolled, setScrolled] = useState(false);
 	const { dark } = useTheme();
-
-	// Header stays transparent over the hero and only gains a surface once the page scrolls.
-	useEffect(() => {
-		const onScroll = () => setScrolled(window.scrollY > 80);
-		onScroll();
-		window.addEventListener('scroll', onScroll, { passive: true });
-		return () => window.removeEventListener('scroll', onScroll);
-	}, []);
 
 	useGSAP(
 		() => {
@@ -72,7 +63,7 @@ export function Landing() {
 				antialiased dark:bg-[oklch(0.19_0_0)] dark:text-[oklch(0.985_0_0)]"
 			ref={rootRef}
 		>
-			<SiteHeader scrolled={scrolled} />
+			<SiteHeader />
 
 			<section
 				className="relative overflow-hidden px-6 pt-28 pb-20 md:pt-32"
