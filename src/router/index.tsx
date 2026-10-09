@@ -1,17 +1,16 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-import { Layout } from '@/layout';
-import { Home } from '@/pages/home';
+import { Landing } from '@/pages/landing';
+import { NotFound } from '@/pages/not-found';
 
 export const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <Layout />,
-		children: [
-			{
-				path: '/',
-				element: <Home />,
-			},
-		],
+		element: <Landing />,
+	},
+	{
+		// Any other path falls through to the not-found page.
+		path: '*',
+		element: <NotFound />,
 	},
 ]);

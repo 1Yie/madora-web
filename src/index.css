@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+	--font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
 	--animate-skeleton: skeleton 2s -1s infinite linear;
 	--color-warning-foreground: var(--warning-foreground);
 	--color-warning: var(--warning);
@@ -158,5 +159,41 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+	}
+
+	/* Site scrollbars follow the light/dark theme. scrollbar-color is the standard
+	   property (Chrome 121+, Firefox); it is set on the root so every scroller inherits it. */
+	html {
+		scrollbar-width: thin;
+		scrollbar-color: oklch(0.78 0 0) transparent;
+	}
+	html.dark {
+		scrollbar-color: oklch(0.42 0 0) transparent;
+	}
+	/* WebKit / Blink fallback for browsers without scrollbar-color. */
+	::-webkit-scrollbar {
+		width: 10px;
+		height: 10px;
+	}
+	::-webkit-scrollbar-track {
+		background: transparent;
+	}
+	::-webkit-scrollbar-thumb {
+		background: oklch(0.78 0 0);
+		border: 3px solid transparent;
+		background-clip: padding-box;
+		border-radius: 999px;
+	}
+	::-webkit-scrollbar-thumb:hover {
+		background: oklch(0.6 0 0);
+		background-clip: padding-box;
+	}
+	html.dark ::-webkit-scrollbar-thumb {
+		background: oklch(0.42 0 0);
+		background-clip: padding-box;
+	}
+	html.dark ::-webkit-scrollbar-thumb:hover {
+		background: oklch(0.55 0 0);
+		background-clip: padding-box;
 	}
 }
